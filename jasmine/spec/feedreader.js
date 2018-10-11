@@ -31,6 +31,8 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        
+        // Loop through allFeeds object to ensure that the URL is defined and not empty
         it('has URL defined', function() {
             for(const feed of allFeeds){
                 expect(feed.url).toBeDefined();
