@@ -121,9 +121,8 @@ $(function() {
                 const firstFeedArray = Array.from(feed.children);
                 firstFeedArray.forEach(function(element){
                     firstFeed.push(element.innerText); 
-                
-                });
-                console.log(firstFeed);    
+                 });
+ 
             loadFeed(1, function(){
                 done();
                 });
@@ -136,7 +135,7 @@ $(function() {
             secondFeedArray.forEach(function(element){
                 secondFeed.push(element.innerText);
              });
-             console.log(secondFeed); 
+
             //compare the content of entries old feed and the new feed
             for (let i = 0; i < firstFeed.length; i++) {
                 expect(firstFeed[i] === secondFeed[i]).toBe(false);
