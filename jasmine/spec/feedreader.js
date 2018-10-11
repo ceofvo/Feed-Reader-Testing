@@ -91,13 +91,15 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+        // run before test
         beforeEach(function(done){
             loadFeed(0, done);
         });
 
-        it('completes its work', function(){
-            const feed = document.querySelector('.feed');
-            expect(feed.children.length > 0).toBe(true);
+        it('checks for elements', function(){
+            const feed = document.querySelector('.feed').querySelectorAll('.entry');
+            expect(feed.length).toBeGreaterThan(0);
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -106,30 +108,37 @@ $(function() {
         const feed = document.querySelector('.feed');
         const firstFeed = [];
         const secondFeed = [];
-
+        
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         beforeEach(function(done){
-            loadFeed(0);
-            const firstFeedArray = Array.from(feed.children);
-            firstFeedArray.forEach(function(element){
-                firstFeed.push(element.innerText);
+            //load the first feed and populate content in firstfeed array
+            loadFeed(0, function(){
+                const firstFeedArray = Array.from(feed.children);
+                firstFeedArray.forEach(function(element){
+                    firstFeed.push(element.innerText); 
+                
+                });
+                console.log(firstFeed);    
+            loadFeed(1, function(){
+                done();
+                });
             });
-
-            loadFeed(1, done);
         });
 
         it('content actually changes', function(){
+            //load the second feed and populate content in secondfeed array 
             const secondFeedArray = Array.from(feed.children);
             secondFeedArray.forEach(function(element){
                 secondFeed.push(element.innerText);
-            });
-
+             });
+             console.log(secondFeed); 
+            //compare the content of entries old feed and the new feed
             for (let i = 0; i < firstFeed.length; i++) {
                 expect(firstFeed[i] === secondFeed[i]).toBe(false);
-              }
+            }
 
         });
     });
