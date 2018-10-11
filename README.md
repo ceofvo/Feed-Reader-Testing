@@ -2,7 +2,12 @@
 
 In this project we were given a web-based application that reads RSS feeds from Udacity Blog, CSS Tricks, HTML5 Rocks & Linear Digressions. I wrote test suite in Jasmine.
 
+# Steps to open and run the App
+Follow the steps below to fun the app
 
+* Clone or download this git repository to your local machine
+* In the repository folder launch the index.html file
+* The feeds will load and test results should be displayed at the bottom of the page.
 
 # Test Expectation & Task
 
